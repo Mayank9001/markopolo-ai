@@ -26,6 +26,7 @@ npm run dev
 
 - Ensure your backend supports pagination and query filtering (e.g., `/api/users?page=2&limit=100`).
 - Update frontend API calls accordingly in `usePaginatedUsers.js`.
+- Test API calls accordingly for error handling and success.
 
 ### 🎨 Frontend Setup
 
