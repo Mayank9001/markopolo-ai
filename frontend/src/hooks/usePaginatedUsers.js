@@ -28,7 +28,7 @@ export const usePaginatedUsers = (search) => {
       setHasMore(newUsers.length > 0);
       setPage((prev) => prev + 1);
     } catch (err) {
-      setError(err);
+      setError(err.response.data.message);
     } finally {
       setIsLoading(false);
     }

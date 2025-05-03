@@ -18,7 +18,6 @@ const UserTable = React.memo(({ search }) => {
   const [sorting, setSorting] = useState([]);
   const { users, fetchNextPage, hasMore, isLoading, error, reset } =
     usePaginatedUsers(search);
-
   const formatPhone = (phone) => {
     if (!phone) return "N/A";
     const digits = phone.replace(/\D/g, "").slice(-10);
@@ -140,7 +139,6 @@ const UserTable = React.memo(({ search }) => {
     return () => scrollContainer?.removeEventListener("scroll", onScroll);
   }, [handleScroll]);
 
-  if (error) return <p className="text-red-500">Error: {error.message}</p>;
   useEffect(() => {
     reset();
     fetchNextPage();
@@ -210,6 +208,7 @@ const UserTable = React.memo(({ search }) => {
       {!hasMore && !isLoading && (
         <p className="p-2 text-center text-gray-400 text-sm">End of results</p>
       )}
+      {error && <p className="text-red-500 hover:bg-blue-100 text-center">Error: {error}</p>}
     </div>
   );
 });
