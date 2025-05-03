@@ -21,7 +21,7 @@ const TOTAL_USERS = users.length;
 app.get("/", (req, res) => {
   return res.status(200).json({ status: "success", msg: "API WOrking weLL!!" });
 });
-// API endpoint with pagination
+
 app.get("/api/users", (req, res) => {
   let { page = 1, limit = 50, search = "" } = req.query;
   page = parseInt(page);
@@ -34,27 +34,38 @@ app.get("/api/users", (req, res) => {
 
   let filteredUsers = users;
 
-  // 🔍 Filter based on search value (name or email)
   if (search) {
     filteredUsers = users.filter((user) => {
       return (
-        user.name.toLowerCase().includes(search) ||
-        user.email.toLowerCase().includes(search)
+        user.name?.toLowerCase().includes(search) ||
+        user.email?.toLowerCase().includes(search)
       );
     });
   }
 
+  const total = filteredUsers.length;
+  const maxPage = Math.ceil(total / limit);
+
+  if (page > maxPage && maxPage !== 0) {
+    return res.status(400).json({
+      error: "Page limit exceeded",
+      message: `Requested page ${page} exceeds maximum page ${maxPage}`,
+      maxPage,
+      total
+    });
+  }
+
   const startIndex = (page - 1) * limit;
-  const paginatedUsers = filteredUsers
-    .slice(startIndex, startIndex + limit);
+  const paginatedUsers = filteredUsers.slice(startIndex, startIndex + limit);
 
   res.json({
     data: paginatedUsers,
-    total: filteredUsers.length,
+    total,
     page,
     limit,
   });
 });
+
 
 // Start server
 app.listen(PORT, () => {
