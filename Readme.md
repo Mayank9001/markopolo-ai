@@ -18,15 +18,13 @@ A responsive React application to view a large list of users with infinite scrol
 
 ### 🔧 Backend Setup (Optional if using mock API)
 
-> Replace this section if you're using a real backend
-
 ```bash
 cd backend
 npm install
-npm start
+npm run dev
 ```
 
-- Ensure your backend supports pagination and query filtering (e.g., `/users?page=1&search=abc`).
+- Ensure your backend supports pagination and query filtering (e.g., `/api/users?page=2&limit=100`).
 - Update frontend API calls accordingly in `usePaginatedUsers.js`.
 
 ### 🎨 Frontend Setup
@@ -50,7 +48,6 @@ App will run on `http://localhost:5173` (Vite default).
 │   └── UserTable.jsx
 ├── hooks/
 │   └── usePaginatedUsers.js  # Handles fetching + pagination
-├── utils/                  # (Optional) For utility functions like formatPhone
 ├── App.jsx
 └── main.jsx
 ```
@@ -104,16 +101,6 @@ App will run on `http://localhost:5173` (Vite default).
 
 ---
 
-## 📌 Future Enhancements
-
-- Add pagination controls (next/prev).
-- Allow user column selection or resizing.
-- Connect to a real backend (e.g., Express + MongoDB).
-- Add user details modal or row expansion.
-
----
-
 ## 📬 Contact
 
-Made with ❤️ by [Your Name].  
-Have feedback or want to contribute? Open an issue or PR!
+Made with ❤️ by Mayank Vishwakarma.  
