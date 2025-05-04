@@ -185,7 +185,7 @@ const UserTable = React.memo(({ search }) => {
                 key={row.id}
                 className={`absolute w-full transition-colors ${
                   i % 2 === 0 ? "bg-white" : "bg-gray-50"
-                } hover:bg-blue-50`}
+                } hover:bg-blue-100`}
                 style={{
                   transform: `translateY(${virtualRow.start}px)`,
                   display: "table",
@@ -208,7 +208,11 @@ const UserTable = React.memo(({ search }) => {
       {!hasMore && !isLoading && (
         <p className="p-2 text-center text-gray-400 text-sm">End of results</p>
       )}
-      {error && <p className="text-red-500 hover:bg-blue-100 text-center">Error: {error}</p>}
+      {error && (
+        <p className="text-red-500 hover:bg-blue-100 text-center">
+          Error: {error}
+        </p>
+      )}
     </div>
   );
 });
