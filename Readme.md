@@ -6,17 +6,17 @@ A responsive React application to view a large list of users with infinite scrol
 
 ## 🧩 Tech Stack
 
-- **Frontend**: React + Vite + TailwindCSS  
-- **Table Engine**: `@tanstack/react-table`  
-- **Virtualization**: `@tanstack/react-virtual`  
-- **Backend**: Mocked user API (can integrate any paginated backend)  
+- **Frontend**: React + Vite + TailwindCSS
+- **Table Engine**: `@tanstack/react-table`
+- **Virtualization**: `@tanstack/react-virtual`
+- **Backend**: Mocked user API (can integrate any paginated backend)
 - **State & Fetching**: React hooks
 
 ---
 
 ## 🚀 Getting Started
 
-### 🔧 Backend Setup (Optional if using mock API)
+### 🔧 Backend Setup
 
 ```bash
 cd backend
@@ -24,9 +24,11 @@ npm install
 npm run dev
 ```
 
+- Server will run at `PORT=3000`, if need to change edit `const API_URL = "http://localhost:3000/api/users";` at line 4 in usePaginatedUser.js file.
 - Ensure your backend supports pagination and query filtering (e.g., `/api/users?page=2&limit=100`).
 - Update frontend API calls accordingly in `usePaginatedUsers.js`.
 - Test API calls accordingly for error handling and success.
+- Change `page`, `limit` (per page) as per need in `usePaginatedUsers.js`.
 
 ### 🎨 Frontend Setup
 
@@ -57,34 +59,39 @@ App will run on `http://localhost:5173` (Vite default).
 
 ## ✨ Features
 
-- 🔍 **Live Search** with debounce  
-- ⬇️ **Infinite Scroll** with smooth loading  
-- 🧭 **Column Sorting** with direction indicators  
-- ⚡ **Virtualized Table** for fast performance on large datasets  
-- 💅 Clean, responsive UI using TailwindCSS  
-- 🛡️ Error and empty state handling  
+- 🔍 **Live Search** with debounce
+- ⬇️ **Infinite Scroll** with smooth loading
+- 🧭 **Column Sorting** with direction indicators
+- ⚡ **Virtualized Table** for fast performance on large datasets
+- 💅 Clean, responsive UI using TailwindCSS
+- 🛡️ Error and empty state handling
 
 ---
 
 ## 🧠 Architecture & Optimization
 
 ### Virtual Scrolling
+
 - Integrated `@tanstack/react-virtual` to render only visible rows.
 - Improves performance when dealing with thousands of rows.
 
 ### Controlled Sorting
+
 - Sorting is handled via `@tanstack/react-table` using controlled state.
 - Visual indicators (`▲▼`) show current sort direction.
 
 ### Debounced Search
+
 - Search input is manually debounced using `setTimeout`.
 - Prevents excessive API requests on every keystroke.
 
 ### Lazy Pagination
+
 - As the user scrolls, new pages are fetched and appended.
 - Triggered 300px before bottom using scroll listener + debounce.
 
 ### Defensive Programming
+
 - Handles missing or malformed data (e.g., null phone or missing address).
 - Uses optional chaining to prevent crashes.
 
@@ -104,4 +111,4 @@ App will run on `http://localhost:5173` (Vite default).
 
 ## 📬 Contact
 
-Made with ❤️ by Mayank Vishwakarma.  
+Made with ❤️ by Mayank Vishwakarma.
