@@ -4,6 +4,10 @@ A responsive React application to view a large list of users with infinite scrol
 
 ---
 
+## Demo Video
+
+[![Watch the video](https://img.youtube.com/vi/RwiZbXnp91A/maxresdefault.jpg)](https://youtu.be/RwiZbXnp91A)
+
 ## 🧩 Tech Stack
 
 - **Frontend**: React + Vite + TailwindCSS
