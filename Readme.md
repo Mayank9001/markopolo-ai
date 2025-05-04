@@ -24,11 +24,9 @@ npm install
 npm run dev
 ```
 
-- Server will run at `PORT=3000`, if need to change edit `const API_URL = "http://localhost:3000/api/users";` at line 4 in usePaginatedUser.js file.
-- Ensure your backend supports pagination and query filtering (e.g., `/api/users?page=2&limit=100`).
-- Update frontend API calls accordingly in `usePaginatedUsers.js`.
-- Test API calls accordingly for error handling and success.
-- Change `page`, `limit` (per page) as per need in `usePaginatedUsers.js`.
+- Server will run at `PORT=3000`.
+- Test API calls accordingly for error handling and success (e.g., `/api/users?page=2&limit=100`, `/api/users?page=-10&limit=100`).
+- Change `page`, `limit` (per page) as per need in `usePaginatedUsers.js` in frontend directory.
 
 ### 🎨 Frontend Setup
 
