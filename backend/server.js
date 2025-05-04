@@ -3,12 +3,9 @@ const fs = require("fs");
 const cors = require("cors");
 
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 3000;
 
-// Enable CORS for all origins
-app.use(cors());
-
-// Read users from JSON file once at startup
 let users = [];
 try {
   users = JSON.parse(fs.readFileSync("users.json", "utf8"));
@@ -16,7 +13,6 @@ try {
   console.error("Error reading users database:", error.message);
   process.exit(1);
 }
-const TOTAL_USERS = users.length;
 
 app.get("/", (req, res) => {
   return res.status(200).json({ status: "success", msg: "API WOrking weLL!!" });
@@ -29,7 +25,10 @@ app.get("/api/users", (req, res) => {
   search = search.toLowerCase();
 
   if (isNaN(page) || page < 1 || isNaN(limit) || limit < 1) {
-    return res.status(400).json({ error: "Invalid page or limit" });
+    return res.status(400).json({
+      error: "Invalid page or limit",
+      message: "Invalid page or limit",
+    });
   }
 
   let filteredUsers = users;
@@ -51,7 +50,7 @@ app.get("/api/users", (req, res) => {
       error: "Page limit exceeded",
       message: `Requested page ${page} exceeds maximum page ${maxPage}`,
       maxPage,
-      total
+      total,
     });
   }
 
@@ -66,8 +65,6 @@ app.get("/api/users", (req, res) => {
   });
 });
 
-
-// Start server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
