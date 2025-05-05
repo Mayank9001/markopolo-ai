@@ -6,7 +6,8 @@ A responsive React application to view a large list of users with infinite scrol
 
 ## Demo Video
 
-[![Watch the video](https://img.youtube.com/vi/RwiZbXnp91A/maxresdefault.jpg)](https://youtu.be/RwiZbXnp91A)
+[![Watch Demo](https://github.com/Mayank9001/markopolo-ai/blob/main/frontend/src/assets/thumb.jpg?raw=true)](https://vimeo.com/1081369322)
+
 
 ## 🧩 Tech Stack
 
